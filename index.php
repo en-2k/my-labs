@@ -9,7 +9,7 @@
   require "header.php";
 ?>
     <main role="main" class="container">
-      Привіт!
+      Стартова сторінка. Використовуйте панель зверху для  запуску лаб.
     </main>
 <?php
   require "footer.php";
