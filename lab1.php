@@ -410,7 +410,10 @@ $("#text_view").change(function(){
         str1 += x;
     }
     $(this).attr("now","plain");
-    $ta.html(str1); 
+    $ta.parent().append('<div class="temp" style="display:none;"></div>');
+    $ta.parent().find("div.temp").html(str1);
+    $ta.val($ta.parent().find("div.temp").text());
+    $ta.parent().find("div.temp").remove();
   }
   if ($(this).val() === "Виведення напряму" && $(this).attr("now") === 'bin'){
     let b = "";
@@ -434,7 +437,10 @@ $("#text_view").change(function(){
         str1 += x;
     }
     $(this).attr("now","plain");
-    $ta.html(str1); 
+    $ta.parent().append('<div class="temp" style="display:none;"></div>');
+    $ta.parent().find("div.temp").html(str1);
+    $ta.val($ta.parent().find("div.temp").text());
+    $ta.parent().find("div.temp").remove();
   }
   if ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'plain'){
     str = str.split('').map((e,i)=>{
