@@ -345,8 +345,9 @@ for (let i = 0 ; i < CP1251.length; i++){
   c1251 += CP1251[i].hexNCR;
 }
 $("#cp1251").html(c1251);
-CP1251.map((e,i)=>{
-  let t = $("#cp1251").text().charCodeAt(i).toString(16); 
+      
+function symCode(symb){
+  let t = symb.charCodeAt(0).toString(16);
   let k = 0;
   let l = t.length; 
   for (let j = 0; j < 4 - l; j++){ t = "0"+t; } 
@@ -354,11 +355,19 @@ CP1251.map((e,i)=>{
   for (let j = 0; j < CP1251.length; j++){ 
     if (CP1251[j].hexNCR === t){  k = j; } 
   } 
-  console.log(i,t,k);
-});
+  return k;
+}
 
 $("#text_view").change(function(){
-  console.log($(this).val());
+  if ($(this).val() === "У шістнадцятковій системі числення" && !$(this).attr("now")){
+    let $ta = $(this).parent().parent().find("textarea");
+    let str = $ta.val();
+    str = str.split('').map((e,i)=>{
+      return symCode(e).toString(16).toUpperCase();
+    }).join('');
+    $(this).attr("now","hex");
+    $ta.val(str); 
+  }
 });
 
     </script>
