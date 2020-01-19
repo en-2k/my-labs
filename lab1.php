@@ -8,6 +8,7 @@
     $pageData['activeLinks']['lab' . $i] = "";
   }
   $pageData['activeLinks']['lab1'] = "active";
+  var_dump($pageDump);
   require "header.php";
 ?>
     <main role="main" class="container">
