@@ -12,6 +12,7 @@
 ?>
     <main role="main" class="container">
       <h1>Л.р.1. Гамування. Моделювання роботи скремблера</h1>
+      <h2>1) гамування (кодування WINDOWS-1251) </h2>
       <div class="row">
         <div class="col-md-4 col-sm-12">
           <p>Текст для шифрування</p>
@@ -76,14 +77,7 @@
           </p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6">
-
-        </div>
-        <div class="col-sm-6">
-
-        </div>
-      </div>
+      
     </main>
     <script>
 window.CP1251 = [
@@ -343,8 +337,12 @@ window.CP1251 = [
 {charName: "CYRILLIC SMALL LETTER YU", hexNCR: "&#x044E"},
 {charName: "CYRILLIC SMALL LETTER YA", hexNCR: "&#x044F"}
 ];
-
-
+$("body").append("<textarea id='cp1251' style='display:hidden;'></textarea>");
+let c1251 = "";
+for (let i = 0 ; i < CP1251.length; i++){
+  c1251 += CP1251[i].hexNCR;
+}
+$("cp1251").text(c1251);
     </script>
 <?php
   require "footer.php";
