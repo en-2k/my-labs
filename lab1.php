@@ -337,10 +337,10 @@ window.CP1251 = [
 {charName: "CYRILLIC SMALL LETTER YU", hexNCR: "&#x044E"},
 {charName: "CYRILLIC SMALL LETTER YA", hexNCR: "&#x044F"}
 ];
-$("body").append("<textarea id='cp1251' style='display:hidden;'></textarea>");
+$("body").append("<textarea id='cp1251' style='display:none;'></textarea>");
 let c1251 = "";
 for (let i = 0 ; i < CP1251.length; i++){
-  c1251 += CP1251[i].hexNCR;
+  c1251 += CP1251[i].hexNCR+";";
 }
 $("#cp1251").text(c1251);
     </script>
