@@ -350,7 +350,7 @@ CP1251.map((e,i)=>{
   let k = 0;
   let l = t.length; 
   for (let j = 0; j < 4 - l; j++){ t = "0"+t; } 
-  t = "&#x"+t.toUpperCase(); 
+  t = "&#x"+t.toUpperCase()+";"; 
   for (let j = 0; j < CP1251.length; j++){ 
     if (CP1251[j].hexNCR === t){  k = j; } 
   } 
