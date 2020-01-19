@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-12">
           <p>Текст для шифрування</p>
-          <textarea class="form-control" id="text"></textarea>
+          <textarea class="form-control" id="text" style="font-family: 'Courier New';"></textarea>
           <p>
             <select class="form-control" id="text_view">
               <option name="normal">Веведення напряму</option>
@@ -23,9 +23,64 @@
               <option name="bin">У двійковій системі числення</option>
             </select>
           </p>
+          <p>
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="save_text">
+              Зберегти у файл
+            </button>
+          </p>
         </div>
-        <div class="col-md-4 col-sm-12"></div>
-        <div class="col-md-4 col-sm-12"></div>
+        <div class="col-md-4 col-sm-12">
+          <p>Ключ</p>
+          <textarea class="form-control" id="key" style="font-family: 'Courier New';"></textarea>
+          <p>
+            <select class="form-control" id="key_view">
+              <option name="normal">Веведення напряму</option>
+              <option name="hex">У шістнадцятковій системі числення</option>
+              <option name="bin">У двійковій системі числення</option>
+            </select>
+          </p>
+          <p>
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="genkey">
+              Згенерувати випадковий ключ
+            </button>
+          <p>
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="save_key">
+              Зберегти у файл
+            </button>
+          </p>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <p>Зашифрований текст</p>
+          <textarea class="form-control" id="cipher" style="font-family: 'Courier New';"></textarea>
+          <p>
+            <select class="form-control" id="cipher_view">
+              <option name="normal">Веведення напряму</option>
+              <option name="hex">У шістнадцятковій системі числення</option>
+              <option name="bin">У двійковій системі числення</option>
+            </select>
+          </p>
+          <p>
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="save_key">
+              Зберегти у файл
+            </button>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <p>
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="encrypt">
+              Зашифрувати
+            </button>
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <p>
+            <button class="btn btn-outline-primary my-2 my-sm-0" id="decrypt">
+              Розшифрувати
+            </button>
+          </p>
+        </div>
       </div>
     </main>
     <script>
@@ -286,11 +341,6 @@ window.CP1251 = [
 {charName: "CYRILLIC SMALL LETTER YU", hexNCR: "&#x044E"},
 {charName: "CYRILLIC SMALL LETTER YA", hexNCR: "&#x044F"}
 ];
-
-window.oCP1251 = {}; 
-for (let i = 0; i < CP1251.length; i++){
-  oCP1251["\u"+CP1251[i].hexNCR.replace("&#x","")] = i;
-}
 
 
     </script>
