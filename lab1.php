@@ -1,14 +1,13 @@
 
 <?php
   $pageData = [
-    'title' => 'Лаби Синєпольського',
+    'title' => 'Л.р.1',
     'activeLinks' => []
   ];
   for ($i = 1; $i <= 7; $i++){
     $pageData['activeLinks']['lab' . $i] = "";
   }
   $pageData['activeLinks']['lab1'] = "active";
-  var_dump($pageData);
   require "header.php";
 ?>
     <main role="main" class="container">
