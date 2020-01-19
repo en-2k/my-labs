@@ -18,7 +18,7 @@
           <p>Текст для шифрування</p>
           <textarea class="form-control" id="text" style="font-family: 'Courier New';"></textarea>
           <p>
-            <select class="form-control" id="text_view">
+            <select class="form-control" id="text_view" now="plain">
               <option name="normal">Виведення напряму</option>
               <option name="hex">У шістнадцятковій системі числення</option>
               <option name="bin">У двійковій системі числення</option>
@@ -39,7 +39,7 @@
           <p>Ключ</p>
           <textarea class="form-control" id="key" style="font-family: 'Courier New';"></textarea>
           <p>
-            <select class="form-control" id="key_view">
+            <select class="form-control" id="key_view" now="plain">
               <option name="normal">Виведення напряму</option>
               <option name="hex">У шістнадцятковій системі числення</option>
               <option name="bin">У двійковій системі числення</option>
@@ -59,7 +59,7 @@
           <p>Зашифрований текст</p>
           <textarea class="form-control" id="cipher" style="font-family: 'Courier New';"></textarea>
           <p>
-            <select class="form-control" id="cipher_view">
+            <select class="form-control" id="cipher_view" now="plain">
               <option name="normal">Виведення напряму</option>
               <option name="hex">У шістнадцятковій системі числення</option>
               <option name="bin">У двійковій системі числення</option>
@@ -339,34 +339,143 @@ window.CP1251 = [
 {charName: "CYRILLIC SMALL LETTER YA", hexNCR: "&#x044F;"}
 ];
 
-$("body").append("<textarea id='cp1251' style='display:none;'></textarea>");
-let c1251 = "";
-for (let i = 0 ; i < CP1251.length; i++){
-  c1251 += CP1251[i].hexNCR;
-}
-$("#cp1251").html(c1251);
-      
-function symCode(symb){
-  let t = symb.charCodeAt(0).toString(16);
-  let k = 0;
-  let l = t.length; 
-  for (let j = 0; j < 4 - l; j++){ t = "0"+t; } 
-  t = "&#x"+t.toUpperCase()+";"; 
-  for (let j = 0; j < CP1251.length; j++){ 
-    if (CP1251[j].hexNCR === t){  k = j; } 
-  } 
-  return k;
+window.oCP1251 = {};
+for (let i = 0; i < CP1251.length; i++){
+  oCP1251[parseInt(CP1251[i].hexNCR.replace("&#x",""),16).toString(10)] = i;
 }
 
 $("#text_view").change(function(){
-  if ($(this).val() === "У шістнадцятковій системі числення" && !$(this).attr("now")){
-    let $ta = $(this).parent().parent().find("textarea");
-    let str = $ta.val();
+  let $ta = $(this).parent().parent().find("textarea");
+  let str = $ta.val();
+  if ($(this).val() === "У шістнадцятковій системі числення" && $(this).attr("now") === 'plain'){
     str = str.split('').map((e,i)=>{
-      return symCode(e).toString(16).toUpperCase();
+      let x = oCP1251[e.charCodeAt(0).toString(10)].toString(16).toUpperCase();
+      for (let j = 0; j < 2 - x.length; j++){
+        x = "0"+x;
+      }
+      return x;
     }).join('');
     $(this).attr("now","hex");
     $ta.val(str); 
+  }
+  if ($(this).val() === "У шістнадцятковій системі числення" && $(this).attr("now") === 'bin'){
+    let b = "";
+    let str1 = "";
+    for (let i = 0; i <= str.length; i++){
+      if ((i % 8) === 0 && i > 0){
+        let x = parseInt(b,2).toString(16).toUpperCase();
+        for (let j = 0; j < 2 - x.length; j++){
+          x = "0"+x;
+        }
+        str1 += x;
+        b = "";
+      }
+      if (i < str.length){
+        let e = str[i];
+        b += e;
+      }
+    }
+    for (let j = 0; j < 8 - b.length; j++){
+      b += "0";
+    }
+    if (b !== "00000000"){
+        let x = parseInt(b,2).toString(16).toUpperCase();
+        for (let j = 0; j < 2 - x.length; j++){
+          x = "0"+x;
+        }
+        str1 += x;
+    }
+    $(this).attr("now","hex");
+    $ta.val(str1); 
+  }
+  if ($(this).val() === "Виведення напряму" && $(this).attr("now") === 'hex'){
+    let b = "";
+    let str1 = "";
+    for (let i = 0; i <= str.length; i++){
+      if ((i % 2) === 0 && i > 0){
+        let x = CP1251[parseInt(b,16)].hexNCR;
+        str1 += x;
+        b = "";
+      }
+      if (i < str.length){
+        let e = str[i];
+        b += e;
+      }
+    }
+    for (let j = 0; j < 2 - b.length; j++){
+      b += "0";
+    }
+    if (b !== "00"){
+        let x = CP1251[parseInt(b,16)].hexNCR;
+        str1 += x;
+    }
+    $(this).attr("now","plain");
+    $ta.html(str1); 
+  }
+  if ($(this).val() === "Виведення напряму" && $(this).attr("now") === 'bin'){
+    let b = "";
+    let str1 = "";
+    for (let i = 0; i <= str.length; i++){
+      if ((i % 8) === 0 && i > 0){
+        let x = CP1251[parseInt(b,2)].hexNCR;
+        str1 += x;
+        b = "";
+      }
+      if (i < str.length){
+        let e = str[i];
+        b += e;
+      }
+    }
+    for (let j = 0; j < 8 - b.length; j++){
+      b += "0";
+    }
+    if (b !== "00000000"){
+        let x = CP1251[parseInt(b,2)].hexNCR;
+        str1 += x;
+    }
+    $(this).attr("now","plain");
+    $ta.html(str1); 
+  }
+  if ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'plain'){
+    str = str.split('').map((e,i)=>{
+      let x = oCP1251[e.charCodeAt(0).toString(10)].toString(2);
+      for (let j = 0; j < 8 - x.length; j++){
+        x = "0"+x;
+      }
+      return x;
+    }).join('');
+    $(this).attr("now","bin");
+    $ta.val(str); 
+  }
+  if ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'hex'){
+    let b = "";
+    let str1 = "";
+    for (let i = 0; i <= str.length; i++){
+      if ((i % 2) === 0 && i > 0){
+        let x = parseInt(b,16).toString(2);
+        for (let j = 0; j < 8 - x.length; j++){
+          x = "0"+x;
+        }
+        str1 += x;
+        b = "";
+      }
+      if (i < str.length){
+        let e = str[i];
+        b += e;
+      }
+    }
+    for (let j = 0; j < 2 - b.length; j++){
+      b += "0";
+    }
+    if (b !== "00"){
+        let x = parseInt(b,16).toString(2).toUpperCase();
+        for (let j = 0; j < 8 - x.length; j++){
+          x = "0"+x;
+        }
+        str1 += x;
+    }
+    $(this).attr("now","bin");
+    $ta.val(str1); 
   }
 });
 
