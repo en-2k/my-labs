@@ -342,7 +342,7 @@ let c1251 = "";
 for (let i = 0 ; i < CP1251.length; i++){
   c1251 += CP1251[i].hexNCR+";";
 }
-$("#cp1251").text(c1251);
+$("#cp1251").html(c1251);
     </script>
 <?php
   require "footer.php";
