@@ -34,7 +34,7 @@
         </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item <?php echo $pageData['aciveLinks']['lab1']; ?>">
+          <li class="nav-item <?php echo $pageData['activeLinks']['lab1']; ?>">
             <a class="nav-link" href="lab1.php">Л.р. 1</a>
           </li>
           <li class="nav-item">
