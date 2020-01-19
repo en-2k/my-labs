@@ -356,6 +356,11 @@ CP1251.map((e,i)=>{
   } 
   console.log(i,t,k);
 });
+
+$("#text_view").change(function(){
+  console.log($(this).val());
+});
+
     </script>
 <?php
   require "footer.php";
