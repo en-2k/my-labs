@@ -9,15 +9,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
     body {
-      min-height: 75rem;
       padding-top: 4.5rem;
     }
     </style>
-    <title>Hello, world!</title>
+    <title>Лаби Синєпольського</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Лаби</a>
+      <a class="navbar-brand" href="https://my-labs.herokuapp.com/">Лаби</a>
         <button class="navbar-toggler" 
                 type="button" 
                 data-toggle="collapse" 
@@ -51,7 +50,7 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Л.р.7</a>
           </li>
         </ul>
-        <div class="form-inline mt-2 mt-md-0">
+        <!--div class="form-inline mt-2 mt-md-0">
           <div class="btn-group">
             <button type="button" 
                 class="btn btn-danger 
@@ -67,7 +66,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
     </nav>
     <main role="main" class="container">
       Привіт!
