@@ -81,7 +81,7 @@
     </main>
     <script>
 window.CP1251 = [
-{charName: "NULL", hexNCR: "&#x0000;"},
+{charName: "NULL", hexNCR: "&#xFFFE;"},
 {charName: "START OF HEADING", hexNCR: "&#x0001;"},
 {charName: "START OF TEXT", hexNCR: "&#x0002;"},
 {charName: "END OF TEXT", hexNCR: "&#x0003;"},
@@ -233,8 +233,7 @@ window.CP1251 = [
 {charName: "BULLET", hexNCR: "&#x2022;"},
 {charName: "EN DASH", hexNCR: "&#x2013;"},
 {charName: "EM DASH", hexNCR: "&#x2014;"},
-{charName: "EM DASH", hexNCR: "&#x2014;"},
-{charName: "EM DASH", hexNCR: "&#x2014;"},
+{charName: "UNDEFINED", hexNCR: "&#xFFFF;"},
 {charName: "TRADE MARK SIGN", hexNCR: "&#x2122;"},
 {charName: "CYRILLIC SMALL LETTER LJE", hexNCR: "&#x0459;"},
 {charName: "SINGLE RIGHT-POINTING ANGLE QUOTATION MARK", hexNCR: "&#x203A;"},
@@ -348,10 +347,10 @@ for (let i = 0 ; i < CP1251.length; i++){
 $("#cp1251").html(c1251);
 CP1251.map((e,i)=>{
   let t = $("#cp1251").text().charCodeAt(i).toString(16); 
-  t = ((t.length < 3)? "0":"")+t; 
   let k = 0;
-  t = ((t.length < 4)? "0":"")+t; 
-  t = "&#x"+t.toUpperCase()+";"; 
+  let l = t.length; 
+  for (let j = 0; j < 4 - l; j++){ t = "0"+t; } 
+  t = "&#x"+t.toUpperCase(); 
   for (let j = 0; j < CP1251.length; j++){ 
     if (CP1251[j].hexNCR === t){  k = j; } 
   } 
