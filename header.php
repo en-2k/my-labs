@@ -34,8 +34,8 @@
         </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link <?php echo $pageData['aciveLinks']['lab1']; ?>" href="lab1.php">Л.р. 1</a>
+          <li class="nav-item <?php echo $pageData['aciveLinks']['lab1']; ?>">
+            <a class="nav-link" href="lab1.php">Л.р. 1</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Л.р.2</a>
