@@ -368,7 +368,7 @@ $("#text_view").change(function(){
       attrnow = "bin";
     }
     for (let i = 0; i <= str.length; i++){
-      if ((i % charbase) === 0 && i > 0){
+      if ((i % oldcharbase) === 0 && i > 0){
         let x = parseInt(b,oldbase).toString(base).toUpperCase();
         let l = x.length;
         for (let j = 0; j < charbase - l; j++){
