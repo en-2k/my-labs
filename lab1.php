@@ -383,10 +383,10 @@ $("#text_view").change(function(){
       }
     }
     let l = b.length;
-    for (let j = 0; j < charbase - l; j++){
+    for (let j = 0; j < oldcharbase - l; j++){
       b += "0";
     }
-    if (b !== zerostr){
+    if (b !== oldzerostr){
         let x = parseInt(b,oldbase).toString(base).toUpperCase();
         let l = x.length;
         for (let j = 0; j < charbase - l; j++){
