@@ -358,7 +358,7 @@ $("#text_view").change(function(){
     let zerostr = "00";
     let oldzerostr = "00000000";
     let attrnow = "hex";
-    if ($(this).val() === "У шістнадцятковій системі числення" && $(this).attr("now") === 'bin') {
+    if ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'hex') {
       charbase = 8;
       oldcharbase = 2;
       base = 2;
