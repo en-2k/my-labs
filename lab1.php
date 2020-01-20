@@ -402,10 +402,10 @@ $("#text_view").change(function(){
         b += e;
       }
     }
+    console.log(b);
     for (let j = 0; j < 2 - b.length; j++){
       b += "0";
     }
-    console.log(b);
     if (b !== "00"){
         let x = CP1251[parseInt(b,16)].hexNCR;
         str1 += x;
