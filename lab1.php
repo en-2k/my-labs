@@ -449,7 +449,7 @@ $("#text_view").change(function(){
     }
     try {
       str = str.split('').map((e,i)=>{
-        let x = oCP1251[e.charCodeAt(0).toString(10)].toString(base);
+        let x = oCP1251[e.charCodeAt(0).toString(10)].toString(base).toUpperCase();
         let l = x.length;
         for (let j = 0; j < charbase - l; j++){
           x = "0"+x;
