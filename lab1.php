@@ -81,17 +81,10 @@
     </main>
     <script src="cp1251.js"></script>
     <script>
-window.oCP1251 = {};
-for (let i = 0; i < CP1251.length; i++){
-  oCP1251[parseInt(CP1251[i].hex,16).toString(10)] = i;
-}
-
 $("#text_view").change(function(){
   let $ta = $(this).parent().parent().find("textarea");
   let str = $ta.val();
-  if ($ta.attr("json") && $(this).attr("now") === 'plain'){
-      str = JSON.parse($ta.attr("json"));
-  }
+  
   if ( ($(this).val() === "У шістнадцятковій системі числення" && $(this).attr("now") === 'bin') 
       || ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'hex') ){
     let b = "";
@@ -181,7 +174,6 @@ $("#text_view").change(function(){
     str1 += '"';
     $(this).attr("now","plain");
     $ta.val(JSON.parse(str1));
-    $ta.attr("json",str1);
   }
   /****************************/
   if ($(this).attr("now") === 'plain' && $(this).val() !== "Виведення напряму"){
