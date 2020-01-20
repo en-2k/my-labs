@@ -351,20 +351,20 @@ $("#text_view").change(function(){
       || ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'hex') ){
     let b = "";
     let str1 = "";
-    let charbase = 2;
-    let oldcharbase = 8;
+    let charbase = 8;
+    let oldcharbase = 2;
     let base = 16;
     let oldbase = 2;
-    let zerostr = "00";
-    let oldzerostr = "00000000";
+    let zerostr = "00000000";
+    let oldzerostr = "00";
     let attrnow = "hex";
     if ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'hex'){
-      charbase = 8;
-      oldcharbase = 2;
+      charbase = 2;
+      oldcharbase = 8;
       base = 2;
       oldbase = 16;
-      zerostr = "00000000";
-      oldzerostr = "00";
+      zerostr = "00";
+      oldzerostr = "00000000";
       attrnow = "bin";
     }
     for (let i = 0; i <= str.length; i++){
