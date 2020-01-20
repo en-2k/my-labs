@@ -341,7 +341,7 @@ window.CP1251 = [
 
 window.oCP1251 = {};
 for (let i = 0; i < CP1251.length; i++){
-  oCP1251[parseInt(CP1251[i].hexNCR,16).toString(10)] = i;
+  oCP1251[parseInt(CP1251[i].hex,16).toString(10)] = i;
 }
 
 $("#text_view").change(function(){
@@ -412,7 +412,7 @@ $("#text_view").change(function(){
     try {
       for (let i = 0; i <= str.length; i++){
         if ((i % charbase) === 0 && i > 0){
-          let x = CP1251[parseInt(b,base)].hexNCR;
+          let x = CP1251[parseInt(b,base)].hex;
           str1 += "\\u"+x;
           b = "";
         }
@@ -430,7 +430,7 @@ $("#text_view").change(function(){
       b += "0";
     }
     if (b !== zerostr){
-        let x = CP1251[parseInt(b,base)].hexNCR;
+        let x = CP1251[parseInt(b,base)].hex;
         str1 += "\\u"+x;
     }
     str1 += '"';
