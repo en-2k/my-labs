@@ -350,7 +350,8 @@ $("#text_view").change(function(){
   if ($(this).val() === "У шістнадцятковій системі числення" && $(this).attr("now") === 'plain'){
     str = str.split('').map((e,i)=>{
       let x = oCP1251[e.charCodeAt(0).toString(10)].toString(16).toUpperCase();
-      for (let j = 0; j < 2 - x.length; j++){
+      let l = x.length;
+      for (let j = 0; j < 2 - l; j++){
         x = "0"+x;
       }
       return x;
@@ -364,7 +365,8 @@ $("#text_view").change(function(){
     for (let i = 0; i <= str.length; i++){
       if ((i % 8) === 0 && i > 0){
         let x = parseInt(b,2).toString(16).toUpperCase();
-        for (let j = 0; j < 2 - x.length; j++){
+        let l = x.length;
+        for (let j = 0; j < 2 - l; j++){
           x = "0"+x;
         }
         str1 += x;
@@ -375,12 +377,14 @@ $("#text_view").change(function(){
         b += e;
       }
     }
-    for (let j = 0; j < 8 - b.length; j++){
+    let l = b.length;
+    for (let j = 0; j < 8 - l; j++){
       b += "0";
     }
     if (b !== "00000000"){
         let x = parseInt(b,2).toString(16).toUpperCase();
-        for (let j = 0; j < 2 - x.length; j++){
+        let l = x.length;
+        for (let j = 0; j < 2 - l; j++){
           x = "0"+x;
         }
         str1 += x;
@@ -402,8 +406,8 @@ $("#text_view").change(function(){
         b += e;
       }
     }
-    console.log(b);
-    for (let j = 0; j < 2 - b.length; j++){
+    let l = b.length;
+    for (let j = 0; j < 2 - l; j++){
       b += "0";
     }
     if (b !== "00"){
@@ -430,7 +434,8 @@ $("#text_view").change(function(){
         b += e;
       }
     }
-    for (let j = 0; j < 8 - b.length; j++){
+    let l = b.length;
+    for (let j = 0; j < 8 - l; j++){
       b += "0";
     }
     if (b !== "00000000"){
@@ -446,7 +451,8 @@ $("#text_view").change(function(){
   if ($(this).val() === "У двійковій системі числення" && $(this).attr("now") === 'plain'){
     str = str.split('').map((e,i)=>{
       let x = oCP1251[e.charCodeAt(0).toString(10)].toString(2);
-      for (let j = 0; j < 8 - x.length; j++){
+      let l = x.length;
+      for (let j = 0; j < 8 - l; j++){
         x = "0"+x;
       }
       return x;
@@ -460,7 +466,8 @@ $("#text_view").change(function(){
     for (let i = 0; i <= str.length; i++){
       if ((i % 2) === 0 && i > 0){
         let x = parseInt(b,16).toString(2);
-        for (let j = 0; j < 8 - x.length; j++){
+        let l = x.length;
+        for (let j = 0; j < 8 - l; j++){
           x = "0"+x;
         }
         str1 += x;
@@ -471,12 +478,14 @@ $("#text_view").change(function(){
         b += e;
       }
     }
-    for (let j = 0; j < 2 - b.length; j++){
+    let l = b.length;
+    for (let j = 0; j < 2 - l; j++){
       b += "0";
     }
     if (b !== "00"){
         let x = parseInt(b,16).toString(2).toUpperCase();
-        for (let j = 0; j < 8 - x.length; j++){
+        let l = x.length;
+        for (let j = 0; j < 8 - l; j++){
           x = "0"+x;
         }
         str1 += x;
