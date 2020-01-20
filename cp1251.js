@@ -256,3 +256,7 @@ window.CP1251 = [
 {charName: "CYRILLIC SMALL LETTER YU", hex: "044E"},
 {charName: "CYRILLIC SMALL LETTER YA", hex: "044F"}
 ];
+window.oCP1251 = {};
+for (let i = 0; i < CP1251.length; i++){
+  oCP1251[parseInt(CP1251[i].hex,16).toString(10)] = i;
+}
